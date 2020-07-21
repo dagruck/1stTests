@@ -1,12 +1,7 @@
-package ru.bellintegrator;
+package ru.google;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
-
-import java.util.List;
 
 public class GoogleSearchTests extends WebDriverSettings {
 
