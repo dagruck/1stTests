@@ -18,6 +18,7 @@ public class GoogleSearchTests extends WebDriverSettings {
         );
     }
 
+
     @Test
     public void checkWiki(){
         chromeDriver.get("https://www.google.com/search?sxsrf=ALeKk010eA_BjvwBltJ9y6HwAvuh5OYIwQ%3A1595311961319&ei=WYcWX6WDE6qyrgTp9LGYAg&q=w");
