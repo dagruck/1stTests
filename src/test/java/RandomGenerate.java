@@ -18,6 +18,7 @@ public class RandomGenerate {
 //                .toString();
         String ran = String.format("%06d",new Random().nextInt(999999));
         File file = new File(ran +"data.txt");
+        file.delete();
         file.createNewFile();                // Создание объекта FileWriter
         for (int i = 0; i < 1000; i++) {
             Random generatedint = new Random();
