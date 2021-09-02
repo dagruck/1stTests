@@ -52,20 +52,24 @@ public class api {
 
         String nam = new   JSONArray(response1.body().asString()).getJSONObject(0).get("name").toString();
         Assertions.assertTrue(new   JSONArray(response1.body().asString()).getJSONObject(0).get("name").toString() != null );
-
         System.out.println("$$$$$$$" + nam);
 
 
+
         JSONArray JSONResponseBody = new   JSONArray(response1.body().asString());
-        String name = JSONResponseBody.getJSONObject(0).get("name").toString();
+        String name = JSONResponseBody.getJSONObject(0).getJSONObject("category").get("name").toString();
         System.out.println("$$$$$$$" + name);
-        // Проверка на соответствие искомого имени
-        Assertions.assertEquals(JSONResponseBody.getJSONObject(0).getString("name"), "cat");
 
 
-
-        String obj = JSONResponseBody.getJSONObject(0).toString();
-        System.out.println(obj);
+//        String name2 = JSONResponseBody.getJSONObject(0).getJSONArray("tags").put(ob).toString();
+//        System.out.println("$$$$$$$" + name2);
+//        // Проверка на соответствие искомого имени
+//        Assertions.assertTrue(JSONResponseBody.getJSONObject(0).getString("name") != null);
+//
+//
+//
+//        String obj = JSONResponseBody.getJSONObject(0).toString();
+//        System.out.println(obj);
 
     }
 
