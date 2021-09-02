@@ -1,0 +1,37 @@
+{
+  "update": {
+  },
+  "fields": {
+    "project": {
+      "id": "10000"
+    },
+    "summary": "Create AT",
+    "issuetype": {
+      "id": "10002"
+    },
+    "assignee": {
+      "name": "admin"
+    },
+    "reporter": {
+      "name": "admin"
+    },
+    "priority": {
+      "id": "3"
+    },
+    "labels": [
+      "tratata",
+      "katofff"
+    ],
+    "description": "AT JSON WORKING",
+    "fixVersions": [
+      {
+        "id": "10001"
+      }
+    ],
+    "components": [
+      {
+        "id": "10000"
+      }
+    ]
+  }
+}
