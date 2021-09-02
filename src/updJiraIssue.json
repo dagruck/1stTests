@@ -1,0 +1,43 @@
+{
+  "update": {
+
+    "summary": [
+      {
+        "set": "Bug in business logic"
+      }
+    ]
+  },
+  "fields": {
+    "project": {
+      "id": "10000"
+    },
+
+    "issuetype": {
+      "id": "10002"
+    },
+    "assignee": {
+      "name": "admin"
+    },
+    "reporter": {
+      "name": "admin"
+    },
+    "priority": {
+      "id": "3"
+    },
+    "labels": [
+      "bugfix",
+      "blitz_test"
+    ],
+    "description": "description",
+    "fixVersions": [
+      {
+        "id": "10001"
+      }
+    ],
+    "components": [
+      {
+        "id": "10000"
+      }
+    ]
+  }
+}

@@ -134,7 +134,33 @@ public class apiJiraIfellow {
 
         }
 
+    @Test
+    public void updateIssue() throws IOException {
 
+        JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/updJiraIssue.json"))));
+
+        RequestSpecification request = given();
+        request
+                .baseUri("https://edujira.ifellow.ru/rest/api/")
+                .header("Content-Type", "application/json")
+//                    .header("Accept", "application/json")
+                .auth()
+                .preemptive()
+                .basic("admin","IghyoDPs3x")
+        ;
+
+        Response response = request
+
+                .body(body.toString())
+                .put("2/issue/10110")
+                ;
+        int statuCode = response.statusCode();
+        String boddy = response.getBody().asString();
+        System.out.println(statuCode);
+        System.out.println(boddy);
+
+
+    }
 
     @Test
     public void testGet2() {
