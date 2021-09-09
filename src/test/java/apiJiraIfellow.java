@@ -12,9 +12,7 @@ import static io.restassured.RestAssured.given;
 public class apiJiraIfellow {
     @Test
     public void getBoards(){
-
-
-
+        new Vova.GetLocation();
         RequestSpecification request = given();
         request
                 .header("Content-Type", "application/json")
@@ -162,27 +160,7 @@ public class apiJiraIfellow {
 
     }
 
-    @Test
-    public void testGet2() {
-        Response response1 = given()
-                .baseUri("https://petstore.swagger.io/v2")
-                .when().get("/pet/2")
-                .then()
-                .statusCode(200)
-                .extract().response();
-        String resp = response1.getBody().asString();
-//        JSONArray obj = new JSONArray(response1.getBody().asString());
-        System.out.println(resp);
-//        JSONObject obj = new JSONArray(response1.getBody()).getJSONObject(0);
-        String name = new JSONObject(response1.getBody().asString()).get("name").toString();
-//        String name = new JSONObject(obj.getJSONObject(0).getString("id").toString());
-        System.out.println("---------------------     " + name);
-        String name2 = new JSONObject(response1.getBody().asString()).getJSONObject("category").get("name").toString();
-        System.out.println("---------------------     " + name2);
-        //  Assertions.assertEquals("Jessie");
-//        System.out.println(name);
 
-    }
 
 
 }

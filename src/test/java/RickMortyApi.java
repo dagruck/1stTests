@@ -1,7 +1,6 @@
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
@@ -9,7 +8,7 @@ import static io.restassured.RestAssured.given;
 
 public class RickMortyApi {
 
-    @Test
+//    @Test
     public void rickMortyApiTest () {
         Response response = given()
                 .baseUri("https://rickandmortyapi.com/api/character/")

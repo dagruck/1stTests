@@ -24,7 +24,6 @@ public class api {
         System.out.println(boddy);
 
 
-
         // или
                 Response response2 = given()
                 .baseUri("https://rickandmortyapi.com/api/character/2")
@@ -50,29 +49,15 @@ public class api {
                 .extract().response();
 
 
-        String nam = new   JSONArray(response1.body().asString()).getJSONObject(0).get("name").toString();
-        Assertions.assertTrue(new   JSONArray(response1.body().asString()).getJSONObject(0).get("name").toString() != null );
+        String nam = new JSONArray(response1.body().asString()).getJSONObject(0).get("name").toString();
+        Assertions.assertTrue(new JSONArray(response1.body().asString()).getJSONObject(0).get("name").toString() != null);
         System.out.println("$$$$$$$" + nam);
 
 
-
-        JSONArray JSONResponseBody = new   JSONArray(response1.body().asString());
+        JSONArray JSONResponseBody = new JSONArray(response1.body().asString());
         String name = JSONResponseBody.getJSONObject(0).getJSONObject("category").get("name").toString();
         System.out.println("$$$$$$$" + name);
-
-
-//        String name2 = JSONResponseBody.getJSONObject(0).getJSONArray("tags").put(ob).toString();
-//        System.out.println("$$$$$$$" + name2);
-//        // Проверка на соответствие искомого имени
-//        Assertions.assertTrue(JSONResponseBody.getJSONObject(0).getString("name") != null);
-//
-//
-//
-//        String obj = JSONResponseBody.getJSONObject(0).toString();
-//        System.out.println(obj);
-
     }
-
 
 
     @Test
@@ -84,17 +69,11 @@ public class api {
                 .statusCode(200)
                 .extract().response();
         String resp = response1.getBody().asString();
-//        JSONArray obj = new JSONArray(response1.getBody().asString());
         System.out.println(resp);
-//        JSONObject obj = new JSONArray(response1.getBody()).getJSONObject(0);
         String name = new JSONObject(response1.getBody().asString()).get("name").toString();
-//        String name = new JSONObject(obj.getJSONObject(0).getString("id").toString());
         System.out.println("---------------------     " + name);
         String name2 = new JSONObject(response1.getBody().asString()).getJSONObject("category").get("name").toString();
         System.out.println("---------------------     " + name2);
-        //  Assertions.assertEquals("Jessie");
-//        System.out.println(name);
-
     }
 
 
