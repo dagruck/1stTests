@@ -114,14 +114,12 @@ public class apiJiraIfellow {
             request
                     .baseUri("https://edujira.ifellow.ru/rest/api/")
                     .header("Content-Type", "application/json")
-//                    .header("Accept", "application/json")
                     .auth()
                     .preemptive()
                     .basic("admin","IghyoDPs3x")
             ;
 
             Response response = request
-
                     .body(body.toString())
                     .post("2/issue")
                     ;
