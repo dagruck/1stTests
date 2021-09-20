@@ -127,13 +127,13 @@ public class apiJiraIfellow {
             String boddy = response.getBody().asString();
             System.out.println(statuCode);
             System.out.println(boddy);
-
-
+            String issueID = new JSONObject(response.getBody().asString()).get("id").toString();
+            return;
         }
 
     @Test
-    public void updateIssue() throws IOException {
-
+    public void updateIssue(String issueID) throws IOException {
+        createIssue();
         JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/updJiraIssue.json"))));
 
         RequestSpecification request = given();
@@ -149,7 +149,7 @@ public class apiJiraIfellow {
         Response response = request
 
                 .body(body.toString())
-                .put("2/issue/10004")
+                .put("2/issue/"+ issueID)
                 ;
         int statuCode = response.statusCode();
         String boddy = response.getBody().asString();
