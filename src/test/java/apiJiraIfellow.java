@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+
 import static io.restassured.RestAssured.given;
 
 public class apiJiraIfellow {
@@ -106,7 +107,7 @@ public class apiJiraIfellow {
     }
 
     @Test
-    public void createIssue() throws IOException {
+    public void createIssue1() throws IOException {
 
         JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/JiraIssue.json"))));
 
@@ -132,15 +133,14 @@ public class apiJiraIfellow {
         }
 
     @Test
-    public void updateIssue(String issueID) throws IOException {
-        createIssue();
+    public void updateIssue1() throws IOException {
+
         JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/updJiraIssue.json"))));
 
         RequestSpecification request = given();
         request
                 .baseUri("https://edujira.ifellow.ru/rest/api/")
                 .header("Content-Type", "application/json")
-//                    .header("Accept", "application/json")
                 .auth()
                 .preemptive()
                 .basic("admin","IghyoDPs3x")
@@ -149,7 +149,7 @@ public class apiJiraIfellow {
         Response response = request
 
                 .body(body.toString())
-                .put("2/issue/"+ issueID)
+                .put("2/issue/10009")
                 ;
         int statuCode = response.statusCode();
         String boddy = response.getBody().asString();
@@ -158,6 +158,8 @@ public class apiJiraIfellow {
 
 
     }
+
+
 
     @Test
     public void deleteIssue() throws IOException {
@@ -177,7 +179,7 @@ public class apiJiraIfellow {
         Response response = request
 
 //                .body(body.toString())
-                .delete("2/issue/10004")
+                .delete("2/issue/10009")
                 ;
         int statuCode = response.statusCode();
         String boddy = response.getBody().asString();
@@ -187,6 +189,36 @@ public class apiJiraIfellow {
 
     }
 
+    @Test
+    public void Issue() throws IOException {
+        String issueID = "";
+//        createIssue();
+//
+//        updateIssue(issueID);
+        JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/updJiraIssue.json"))));
+
+        RequestSpecification request = given();
+        request
+                .baseUri("https://edujira.ifellow.ru/rest/api/")
+                .header("Content-Type", "application/json")
+//                    .header("Accept", "application/json")
+                .auth()
+                .preemptive()
+                .basic("admin","IghyoDPs3x")
+        ;
+
+        Response response = request
+
+//                .body(body.toString())
+                .delete("2/issue/"+issueID)
+                ;
+        int statuCode = response.statusCode();
+        String boddy = response.getBody().asString();
+        System.out.println(statuCode);
+        System.out.println(boddy);
+
+
+    }
 
 
 
