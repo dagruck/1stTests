@@ -23,6 +23,7 @@ public class apiJiraIfellow {
                 .preemptive()
                 .basic("admin","IghyoDPs3x")
                 .get("https://edujira.ifellow.ru/rest/agile/1.0/board");
+
         int statuCode = response.statusCode();
         String boddy = response.getBody().asString();
         System.out.println(statuCode);
@@ -150,7 +151,35 @@ public class apiJiraIfellow {
         Response response = request
 
                 .body(body.toString())
-                .put("2/issue/10110")
+                .put("2/issue/10004")
+                ;
+        int statuCode = response.statusCode();
+        String boddy = response.getBody().asString();
+        System.out.println(statuCode);
+        System.out.println(boddy);
+
+
+    }
+
+    @Test
+    public void deleteIssue() throws IOException {
+
+        JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/updJiraIssue.json"))));
+
+        RequestSpecification request = given();
+        request
+                .baseUri("https://edujira.ifellow.ru/rest/api/")
+                .header("Content-Type", "application/json")
+//                    .header("Accept", "application/json")
+                .auth()
+                .preemptive()
+                .basic("admin","IghyoDPs3x")
+        ;
+
+        Response response = request
+
+//                .body(body.toString())
+                .delete("2/issue/10004")
                 ;
         int statuCode = response.statusCode();
         String boddy = response.getBody().asString();

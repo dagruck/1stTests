@@ -13,7 +13,7 @@
     },
 
     "issuetype": {
-      "id": "10002"
+      "id": "10102"
     },
     "assignee": {
       "name": "admin"
@@ -29,11 +29,6 @@
       "blitz_test"
     ],
     "description": "description",
-    "fixVersions": [
-      {
-        "id": "10001"
-      }
-    ],
     "components": [
       {
         "id": "10000"
