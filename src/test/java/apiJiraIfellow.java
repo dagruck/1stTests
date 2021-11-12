@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-
 import static io.restassured.RestAssured.given;
 
 public class apiJiraIfellow {
@@ -98,6 +97,7 @@ public class apiJiraIfellow {
                 .basic("admin","IghyoDPs3x")
                 .get("https://edujira.ifellow.ru/rest/api/3/project/search")
                 ;
+
         int statuCode = response.statusCode();
         String boddy = response.getBody().asString();
         System.out.println(statuCode);
@@ -123,9 +123,12 @@ public class apiJiraIfellow {
             Response response = request
                     .body(body.toString())
                     .post("2/issue")
-                    ;
+                    .then()
+                    .log().all()
+                    .extract().response();
             int statuCode = response.statusCode();
             String boddy = response.getBody().asString();
+            System.out.println(request);
             System.out.println(statuCode);
             System.out.println(boddy);
             String issueID = new JSONObject(response.getBody().asString()).get("id").toString();
@@ -211,6 +214,37 @@ public class apiJiraIfellow {
 
 //                .body(body.toString())
                 .delete("2/issue/"+issueID)
+                ;
+        int statuCode = response.statusCode();
+        String boddy = response.getBody().asString();
+        System.out.println(statuCode);
+        System.out.println(boddy);
+
+
+    }
+
+    @Test
+    public void IssueGet() throws IOException {
+        String issueID = "";
+//        createIssue();
+//
+//        updateIssue(issueID);
+        JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/updJiraIssue.json"))));
+
+        RequestSpecification request = given();
+        request
+                .baseUri("https://edujira.ifellow.ru/rest/api/")
+                .header("Content-Type", "application/json")
+//                    .header("Accept", "application/json")
+                .auth()
+                .preemptive()
+                .basic("admin","IghyoDPs3x")
+        ;
+
+        Response response = request
+
+//                .body(body.toString())
+                .get("2/issue/10108")
                 ;
         int statuCode = response.statusCode();
         String boddy = response.getBody().asString();

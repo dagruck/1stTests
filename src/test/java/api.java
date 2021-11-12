@@ -6,6 +6,10 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static io.restassured.RestAssured.given;
 
 public class api {
@@ -63,6 +67,7 @@ public class api {
     @Test
     public void testGet2() {
         Response response1 = given()
+
                 .baseUri("https://petstore.swagger.io/v2")
                 .when().get("/pet/2")
                 .then()
@@ -74,6 +79,26 @@ public class api {
         System.out.println("---------------------     " + name);
         String name2 = new JSONObject(response1.getBody().asString()).getJSONObject("category").get("name").toString();
         System.out.println("---------------------     " + name2);
+    }
+
+
+    @Test
+    public void testGetw() throws IOException {
+        JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/2.json"))));
+        System.out.println(body);
+        Response response1 = given()
+                .header("Content-Type", "application/json")
+                .baseUri("https://reqres.in/api")
+                .when()
+                .body(body.toString())
+                .post("/users")
+                .then()
+                .statusCode(201)
+                .log().all()
+                .extract().response();
+//        String resp = (response1.getBody().asString()).;
+//        System.out.println(resp);
+
     }
 
 

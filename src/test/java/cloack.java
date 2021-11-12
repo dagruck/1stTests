@@ -1,5 +1,3 @@
-import org.junit.jupiter.api.Test;
-
 import java.util.Random;
 
 public class cloack {
@@ -54,6 +52,8 @@ public class cloack {
 
         System.out.printf("Time %02d:%02d angle: %3.0f deg.\n", hours, minutes, angle2 * 180 / Math.PI);
         System.out.printf("Time %02d:%02d angle: %3.0f deg.\n", hours, minutes, angle3 * 180 / Math.PI);
+
+
 
     }
 

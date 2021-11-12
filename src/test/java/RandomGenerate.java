@@ -60,5 +60,15 @@ public class RandomGenerate {
         System.out.println(solve(0, 10));
     }
 
+
+
+
+
+    @Test
+    public void gr(){
+        String ran = String.format("%06d",new Random().nextInt(999999));
+        System.out.println(ran);
+    }
+
 }
 
